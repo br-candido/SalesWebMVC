@@ -389,5 +389,5 @@ AppInsightsInstrumentationKey.cs
 docs/_build/*
 !Directory.Build.rsp
 
-SalesWebMVC/appsettings.json
-SalesWebMVC/appsettings.Development.json
+/SalesWebMVC/appsettings.json
+/SalesWebMVC/appsettings.Development.json
