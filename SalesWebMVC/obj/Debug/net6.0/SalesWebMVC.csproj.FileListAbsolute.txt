@@ -1,5 +1,4 @@
 C:\Users\Usuario\Documents\projetosCurso\SalesWebMVC\SalesWebMVC\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\Usuario\Documents\projetosCurso\SalesWebMVC\SalesWebMVC\bin\Debug\net6.0\appsettings.json
 C:\Users\Usuario\Documents\projetosCurso\SalesWebMVC\SalesWebMVC\bin\Debug\net6.0\SalesWebMVC.staticwebassets.runtime.json
 C:\Users\Usuario\Documents\projetosCurso\SalesWebMVC\SalesWebMVC\bin\Debug\net6.0\SalesWebMVC.exe
 C:\Users\Usuario\Documents\projetosCurso\SalesWebMVC\SalesWebMVC\bin\Debug\net6.0\SalesWebMVC.deps.json
