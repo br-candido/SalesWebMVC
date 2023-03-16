@@ -26,7 +26,7 @@ namespace SalesWebMVC.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var departments =await _departmentService.FindAllAsync();
+            var departments = await _departmentService.FindAllAsync();
             var viewModel = new SellerFormViewModel { Departments = departments };
             return View(viewModel);
         }
@@ -49,11 +49,11 @@ namespace SalesWebMVC.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new {message = "Missing Id on request." });
+                return RedirectToAction(nameof(Error), new { message = "Missing Id on request." });
             }
 
             var obj = await _sellerService.FindByIdAsync(id.Value);
-            if(obj == null)
+            if (obj == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not found." });
             }
@@ -65,8 +65,15 @@ namespace SalesWebMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            await _sellerService.RemoveAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _sellerService.RemoveAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (IntegrityException e)
+            {
+                return RedirectToAction(nameof(Error), new { message = e.Message });
+            }
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -94,7 +101,7 @@ namespace SalesWebMVC.Controllers
 
             var obj = await _sellerService.FindByIdAsync(id.Value);
 
-            if(obj == null)
+            if (obj == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not found." });
             }
@@ -127,14 +134,14 @@ namespace SalesWebMVC.Controllers
             }
             catch (ApplicationException e)
             {
-                return RedirectToAction(nameof(Error),e.Message);
+                return RedirectToAction(nameof(Error), e.Message);
             }
         }
 
         public IActionResult Error(string message)
         {
-            var viewModel = new ErrorViewModel 
-            { 
+            var viewModel = new ErrorViewModel
+            {
                 Message = message,
                 RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
             };
